@@ -15,13 +15,17 @@ app.get('/api/hello', (req, res) => {
 
 app.post('/api/world', (req, res) => {
   console.log(req.body);
-  const BrowserHistory = require('node-browser-history');
-  BrowserHistory.getAllHistory(10).then(function (history) {
-    let result = JSON.stringify(history)
-    res.send(
-      `I received your POST request. This is what you sent me: ${req.body.post} ${result}`,
-    );
-  });
+  // const BrowserHistory = require('node-browser-history');
+  // BrowserHistory.getAllHistory(10).then(function (history) {
+  //   let result = JSON.stringify(history)
+  //   res.send(
+  //     `I received your POST request. This is what you sent me: ${req.body.post} ${result}`,
+  //   );
+  // });
+
+  res.send(
+    `I received your POST request. This is what you sent me: ${req.body.post}`,
+  );
 
 });
 
