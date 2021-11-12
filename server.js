@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const json = require('body-parser/lib/types/json');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -15,14 +14,14 @@ app.get('/api/hello', (req, res) => {
 });
 
 app.post('/api/world', (req, res) => {
+  console.log(req.body);
   const BrowserHistory = require('node-browser-history');
-  BrowserHistory.getAllHistory(200).then(function (history) {
-    console.log(history);
-    const result = JSON.stringify(history)
+  BrowserHistory.getAllHistory(10).then(function (history) {
+    let result = JSON.stringify(history)
     res.send(
-      `I received your POST request. This is what you sent me: ${result}`,
+      `I received your POST request. This is what you sent me: ${req.body.post} ${result}`,
     );
-  })
+  });
 
 });
 
@@ -35,7 +34,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 }
-
 
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
