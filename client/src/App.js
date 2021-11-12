@@ -36,6 +36,7 @@ class App extends Component {
       body: JSON.stringify({ post: this.state.post }),
     });
     const body = await response.text();
+    console.log('data :',body)
 
     this.setState({ responseToPost: body });
   };

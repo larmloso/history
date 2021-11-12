@@ -17,7 +17,7 @@ app.get('/api/hello', (req, res) => {
 app.post('/api/world', (req, res) => {
   const BrowserHistory = require('node-browser-history');
   BrowserHistory.getAllHistory(200).then(function (history) {
-    //console.log(history);
+    console.log(history);
     const result = JSON.stringify(history)
     res.send(
       `I received your POST request. This is what you sent me: ${result}`,
